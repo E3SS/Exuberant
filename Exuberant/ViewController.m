@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "NVLHaloApi.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [[NVLHaloApi sharedInstance] getArenaStats:@"TorpedoSkyline" completionHandler:^(id json, NSError *error) {
+        if (error) {
+            NSLog(@"Error: %@", error);
+            return;
+        }
+        
+        NSLog(@"Response: %@", json);
+    }];
 }
 
 

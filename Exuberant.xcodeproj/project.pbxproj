@@ -13,6 +13,8 @@
 		AC6602E81F017E3A00056585 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6602E61F017E3A00056585 /* Main.storyboard */; };
 		AC6602EA1F017E3A00056585 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC6602E91F017E3A00056585 /* Assets.xcassets */; };
 		AC6602ED1F017E3A00056585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6602EB1F017E3A00056585 /* LaunchScreen.storyboard */; };
+		AC6602F71F01945A00056585 /* NVLHaloApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6602F61F01945A00056585 /* NVLHaloApi.m */; };
+		AC6602FA1F019B5D00056585 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6602F91F019B5D00056585 /* AFNetworking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		AC6602E91F017E3A00056585 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC6602EC1F017E3A00056585 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC6602EE1F017E3A00056585 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC6602F51F01945A00056585 /* NVLHaloApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLHaloApi.h; path = Networking/NVLHaloApi.h; sourceTree = "<group>"; };
+		AC6602F61F01945A00056585 /* NVLHaloApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLHaloApi.m; path = Networking/NVLHaloApi.m; sourceTree = "<group>"; };
+		AC6602F91F019B5D00056585 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6602FA1F019B5D00056585 /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,7 @@
 			children = (
 				AC6602DC1F017E3A00056585 /* Exuberant */,
 				AC6602DB1F017E3A00056585 /* Products */,
+				AC6602F81F019B5C00056585 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +65,10 @@
 		AC6602DC1F017E3A00056585 /* Exuberant */ = {
 			isa = PBXGroup;
 			children = (
+				AC6602FC1F01AEE300056585 /* Controllers */,
+				AC6602F41F01943100056585 /* Networking */,
 				AC6602E01F017E3A00056585 /* AppDelegate.h */,
 				AC6602E11F017E3A00056585 /* AppDelegate.m */,
-				AC6602E31F017E3A00056585 /* ViewController.h */,
-				AC6602E41F017E3A00056585 /* ViewController.m */,
 				AC6602E61F017E3A00056585 /* Main.storyboard */,
 				AC6602E91F017E3A00056585 /* Assets.xcassets */,
 				AC6602EB1F017E3A00056585 /* LaunchScreen.storyboard */,
@@ -79,6 +86,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		AC6602F41F01943100056585 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AC6602F51F01945A00056585 /* NVLHaloApi.h */,
+				AC6602F61F01945A00056585 /* NVLHaloApi.m */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		AC6602F81F019B5C00056585 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC6602F91F019B5D00056585 /* AFNetworking.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AC6602FC1F01AEE300056585 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AC6602E31F017E3A00056585 /* ViewController.h */,
+				AC6602E41F017E3A00056585 /* ViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,6 +122,7 @@
 				AC6602D61F017E3A00056585 /* Sources */,
 				AC6602D71F017E3A00056585 /* Frameworks */,
 				AC6602D81F017E3A00056585 /* Resources */,
+				AC6602FB1F019B7600056585 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -146,12 +180,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AC6602FB1F019B7600056585 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				Carthage/Build/iOS/AFNetworking.framework,
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC6602D61F017E3A00056585 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AC6602E51F017E3A00056585 /* ViewController.m in Sources */,
+				AC6602F71F01945A00056585 /* NVLHaloApi.m in Sources */,
 				AC6602E21F017E3A00056585 /* AppDelegate.m in Sources */,
 				AC6602DF1F017E3A00056585 /* main.m in Sources */,
 			);
@@ -274,6 +326,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Exuberant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = torpedoskyline.Exuberant;
@@ -286,6 +342,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 42DJD2F3FM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Exuberant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = torpedoskyline.Exuberant;
