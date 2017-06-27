@@ -13,5 +13,6 @@ typedef void (^CompletionHandler)(id json, NSError *error);
 
 +(NVLHaloApi *)sharedInstance;
 -(void)getArenaStats:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
+-(BOOL)isNetworkConnected;
 
 @end

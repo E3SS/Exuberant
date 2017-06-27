@@ -15,6 +15,12 @@
 		AC6602ED1F017E3A00056585 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC6602EB1F017E3A00056585 /* LaunchScreen.storyboard */; };
 		AC6602F71F01945A00056585 /* NVLHaloApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6602F61F01945A00056585 /* NVLHaloApi.m */; };
 		AC6602FA1F019B5D00056585 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6602F91F019B5D00056585 /* AFNetworking.framework */; };
+		AC6602FF1F02100700056585 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6602FE1F02100700056585 /* SetupViewController.m */; };
+		AC6603031F02113A00056585 /* NVLGamertag.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6603021F02113A00056585 /* NVLGamertag.m */; };
+		AC6603061F02C7F000056585 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6603051F02C7F000056585 /* HomeViewController.m */; };
+		AC6603091F02C84A00056585 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6603081F02C84A00056585 /* ProfileViewController.m */; };
+		AC66030C1F02C87000056585 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC66030B1F02C87000056585 /* SearchViewController.m */; };
+		AC66030F1F02CA0900056585 /* NVLXboxLiveAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AC66030E1F02CA0900056585 /* NVLXboxLiveAPI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +37,18 @@
 		AC6602F51F01945A00056585 /* NVLHaloApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLHaloApi.h; path = Networking/NVLHaloApi.h; sourceTree = "<group>"; };
 		AC6602F61F01945A00056585 /* NVLHaloApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLHaloApi.m; path = Networking/NVLHaloApi.m; sourceTree = "<group>"; };
 		AC6602F91F019B5D00056585 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		AC6602FD1F02100700056585 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetupViewController.h; path = Controllers/SetupViewController.h; sourceTree = "<group>"; };
+		AC6602FE1F02100700056585 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetupViewController.m; path = Controllers/SetupViewController.m; sourceTree = "<group>"; };
+		AC6603011F02113A00056585 /* NVLGamertag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLGamertag.h; path = Models/NVLGamertag.h; sourceTree = "<group>"; };
+		AC6603021F02113A00056585 /* NVLGamertag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLGamertag.m; path = Models/NVLGamertag.m; sourceTree = "<group>"; };
+		AC6603041F02C7F000056585 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = Controllers/HomeViewController.h; sourceTree = "<group>"; };
+		AC6603051F02C7F000056585 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Controllers/HomeViewController.m; sourceTree = "<group>"; };
+		AC6603071F02C84A00056585 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileViewController.h; path = Controllers/ProfileViewController.h; sourceTree = "<group>"; };
+		AC6603081F02C84A00056585 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileViewController.m; path = Controllers/ProfileViewController.m; sourceTree = "<group>"; };
+		AC66030A1F02C87000056585 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = Controllers/SearchViewController.h; sourceTree = "<group>"; };
+		AC66030B1F02C87000056585 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = Controllers/SearchViewController.m; sourceTree = "<group>"; };
+		AC66030D1F02CA0900056585 /* NVLXboxLiveAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLXboxLiveAPI.h; path = Networking/NVLXboxLiveAPI.h; sourceTree = "<group>"; };
+		AC66030E1F02CA0900056585 /* NVLXboxLiveAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLXboxLiveAPI.m; path = Networking/NVLXboxLiveAPI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +83,7 @@
 		AC6602DC1F017E3A00056585 /* Exuberant */ = {
 			isa = PBXGroup;
 			children = (
+				AC6603001F02112000056585 /* Models */,
 				AC6602FC1F01AEE300056585 /* Controllers */,
 				AC6602F41F01943100056585 /* Networking */,
 				AC6602E01F017E3A00056585 /* AppDelegate.h */,
@@ -91,6 +110,8 @@
 			children = (
 				AC6602F51F01945A00056585 /* NVLHaloApi.h */,
 				AC6602F61F01945A00056585 /* NVLHaloApi.m */,
+				AC66030D1F02CA0900056585 /* NVLXboxLiveAPI.h */,
+				AC66030E1F02CA0900056585 /* NVLXboxLiveAPI.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -108,8 +129,25 @@
 			children = (
 				AC6602E31F017E3A00056585 /* ViewController.h */,
 				AC6602E41F017E3A00056585 /* ViewController.m */,
+				AC6602FD1F02100700056585 /* SetupViewController.h */,
+				AC6602FE1F02100700056585 /* SetupViewController.m */,
+				AC6603041F02C7F000056585 /* HomeViewController.h */,
+				AC6603051F02C7F000056585 /* HomeViewController.m */,
+				AC6603071F02C84A00056585 /* ProfileViewController.h */,
+				AC6603081F02C84A00056585 /* ProfileViewController.m */,
+				AC66030A1F02C87000056585 /* SearchViewController.h */,
+				AC66030B1F02C87000056585 /* SearchViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		AC6603001F02112000056585 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AC6603011F02113A00056585 /* NVLGamertag.h */,
+				AC6603021F02113A00056585 /* NVLGamertag.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +242,14 @@
 			files = (
 				AC6602E51F017E3A00056585 /* ViewController.m in Sources */,
 				AC6602F71F01945A00056585 /* NVLHaloApi.m in Sources */,
+				AC6603091F02C84A00056585 /* ProfileViewController.m in Sources */,
+				AC6603061F02C7F000056585 /* HomeViewController.m in Sources */,
+				AC66030F1F02CA0900056585 /* NVLXboxLiveAPI.m in Sources */,
+				AC66030C1F02C87000056585 /* SearchViewController.m in Sources */,
 				AC6602E21F017E3A00056585 /* AppDelegate.m in Sources */,
+				AC6602FF1F02100700056585 /* SetupViewController.m in Sources */,
 				AC6602DF1F017E3A00056585 /* main.m in Sources */,
+				AC6603031F02113A00056585 /* NVLGamertag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

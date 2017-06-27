@@ -9,23 +9,37 @@
 #import "ViewController.h"
 #import "NVLHaloApi.h"
 
-@interface ViewController ()
+@interface InitialViewController ()
 
 @end
 
-@implementation ViewController
+@implementation InitialViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [[NVLHaloApi sharedInstance] getArenaStats:@"TorpedoSkyline" completionHandler:^(id json, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-            return;
-        }
-        
-        NSLog(@"Response: %@", json);
-    }];
+//    [[NVLHaloApi sharedInstance] getArenaStats:@"TorpedoSkyline" completionHandler:^(id json, NSError *error) {
+//        if (error) {
+//            NSLog(@"Error: %@", error);
+//            return;
+//        }
+//        
+//        NSLog(@"Response: %@", json);
+//    }];
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // If no followers and first load
+    if (true) {
+        [self performSegueWithIdentifier:@"segueToIntro" sender:self];
+    } else {
+        // We're experienced
+        // [self performSegueWithIdentifier:@"segueToMain" sender:self];
+    }
 }
 
 

@@ -37,6 +37,11 @@ NSString *apiKey;
 
 -(void)getArenaStats:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
 {
+
+//    if (![self isNetworkConnected]) {
+//        completionHandler(nil, [NSError errorWithDomain:NSErr code:<#(NSInteger)#> userInfo:<#(nullable NSDictionary *)#>])
+//    }
+    
     NSString *routeUrl = @"https://www.haloapi.com/stats/h5/servicerecords/arena";
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -63,5 +68,8 @@ NSString *apiKey;
     return request;
 }
 
+-(BOOL)isNetworkConnected {
+    return [[AFNetworkReachabilityManager sharedManager] isReachable];
+}
 
 @end
