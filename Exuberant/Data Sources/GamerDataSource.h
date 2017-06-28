@@ -12,6 +12,6 @@
 @interface GamerDataSource : NSObject
 
 +(instancetype)sharedInstance;
-- (void)addGamertag:(NVLGamertag *)gamertag;
+- (void)addGamertag:(NVLGamertag *)gamertag completionHandler:(void (^)())completionHandler;
 
 @end

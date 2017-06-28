@@ -12,8 +12,9 @@
 typedef void (^CompletionHandler)(id json, NSError *error);
 
 + (NVLHaloApi *)sharedInstance;
-- (void)getArenaStats:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
+- (void)getArenaServiceRecord:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
 - (void)getMaps:(CompletionHandler)completionHandler;
+- (void)getPlayerMatchHistoryFor:(NSString *)player forMode:(NSString *)mode startIndex:(int)startIndex count:(int)count completionHandler:(CompletionHandler)completionHandler;
 - (BOOL)isNetworkConnected;
 
 @end

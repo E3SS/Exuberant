@@ -11,6 +11,9 @@
 #import "NVLHaloApi.h"
 #import "NVLGamertag.h"
 
+// Replace with CoreData
+#import "GamerDataSource.h"
+
 @interface SetupViewController ()
 @property (strong, nonatomic) NVLGamertag *gamertag;
 @end
@@ -30,7 +33,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"segueToMainFromSetup"]) {
-        // Attach gamertag object to destination
+        
     }
 }
 
@@ -48,8 +51,10 @@
 
         }
         
-        // Add to data
-        [self performSegueWithIdentifier:@"segueToMainFromSetup" sender:self];
+        NVLGamertag *gamertag = [[NVLGamertag alloc] initFromDictionary:json];
+        [[GamerDataSource sharedInstance] addGamertag:gamertag completionHandler:^() {
+            [self performSegueWithIdentifier:@"segueToMainFromSetup" sender:self];
+        }];
     }];
 }
 @end

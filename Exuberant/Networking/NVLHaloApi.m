@@ -43,12 +43,30 @@ typedef void (^CompletionHandler)(id json, NSError *error);
     return self;
 }
 
--(void)getArenaStats:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
+-(void)getArenaServiceRecord:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
 {  
     NSString *routeUrl = @"https://www.haloapi.com/stats/h5/servicerecords/arena";
     NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeUrl withParameters:@{@"players": gamertag}];
     
     NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest: request completionHandler: ^(NSURLResponse *response, id responseObject, NSError *error) {
+        if (error) {
+            completionHandler(nil, error);
+        } else {
+            completionHandler(responseObject, nil);
+        }
+    }];
+    
+    [dataTask resume];
+}
+
+- (void)getPlayerMatchHistoryFor:(NSString *)player forMode:(NSString *)mode startIndex:(int)startIndex count:(int)count completionHandler:(CompletionHandler)completionHandler
+{
+    NSString *routeUrl = [NSString stringWithFormat:@"https://www.haloapi.com/stats/h5/players/%@/matches", player];
+    NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeUrl
+                                                  withParameters:@{@"modes": mode,
+                                                                   @"start": [NSString stringWithFormat:@"%i", startIndex],
+                                                                   @"count": [NSString stringWithFormat:@"%i", count]}];
+    NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request completionHandler: ^(NSURLResponse *response, id responseObject, NSError *error) {
         if (error) {
             completionHandler(nil, error);
         } else {

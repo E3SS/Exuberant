@@ -10,6 +10,9 @@
 // This is here to act as a temporary data source.
 
 #import "GamerDataSource.h"
+#import "NVLHaloApi.h"
+#import "NVLHaloMatch.h"
+#import "MatchDataSource.h"
 
 @interface GamerDataSource ()
 
@@ -38,10 +41,24 @@
     return self;
 }
 
-- (void)addGamertag:(NVLGamertag *)gamertag
+- (void)addGamertag:(NVLGamertag *)gamertag completionHandler:(void (^)())completionHandler
 {
+    [[NVLHaloApi sharedInstance] getPlayerMatchHistoryFor: gamertag.displayName forMode:@"arena" startIndex:0 count:25 completionHandler:^(NSDictionary *json, NSError *error) {
+        NSArray *results = json[@"Results"];
+        
+        for (int i = 0; i < [results count]; i++) {
+            
+            NVLHaloMatch *match = [[NVLHaloMatch alloc] initWithDictionary: [results objectAtIndex:i] forGamertag: gamertag];
+            [[MatchDataSource sharedInstance] addMatch:match];
+            
+            [[gamertag matches] addObject:match];
+        }
+        
+        [self.data addObject:gamertag];
+        
+        completionHandler();
+    }];
     
-    [self.data addObject:gamertag];
 }
 
 @end

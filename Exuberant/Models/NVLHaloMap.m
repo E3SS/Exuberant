@@ -19,7 +19,6 @@
         _imageURL = dict[@"imageUrl"];
         _mapId = dict[@"id"];
         _contentId = dict[@"contentId"];
-        
     }
     return self;
 }

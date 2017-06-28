@@ -12,5 +12,6 @@
 @interface HomeViewController : UIViewController
 
 @property (strong, nonatomic) HomeFeedDataSource *dataSource;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

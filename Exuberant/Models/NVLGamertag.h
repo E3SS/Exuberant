@@ -13,6 +13,7 @@
 @property (strong, nonatomic) NSString *displayName;
 @property (strong, nonatomic) NSString *xuid;
 @property (strong, nonatomic) NSString *imageURL;
+@property (strong, nonatomic) NSMutableArray *matches;
 
 - (id)initFromDictionary:(NSDictionary *)dict;
 

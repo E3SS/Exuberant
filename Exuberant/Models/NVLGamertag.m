@@ -18,6 +18,7 @@
         _displayName = dict[@"Gamertag"];
         _xuid        = dict[@"id"];
         _imageURL    = dict[@"GameDisplayPicRaw"];
+        _matches     = [[NSMutableArray alloc] init];
     }
     return self;
 }
