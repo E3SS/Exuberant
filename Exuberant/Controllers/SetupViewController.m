@@ -7,6 +7,7 @@
 //
 
 #import "SetupViewController.h"
+#import "NVLXboxLiveAPI.h"
 #import "NVLHaloApi.h"
 #import "NVLGamertag.h"
 
@@ -36,24 +37,18 @@
 
 - (IBAction)submit:(id)sender {
     NSString *gamertag = [self.textField text];
-    [NVLHaloApi.sharedInstance getArenaStats:gamertag completionHandler:^(id json, NSError *error) {
+    
+    [[NVLXboxLiveAPI sharedInstance] getGamerTagProfile:gamertag completionHandler:^(NSDictionary *json, NSError *error) {
         if (error) {
-            NSString *errorMessage;
-            
-            if (error.code == -1011) {
-                errorMessage = @"Gamertag not found!";
-            } else {
-                errorMessage = error.localizedDescription;
-            }
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil ];
             [alert addAction:alertAction];
             
             [self presentViewController:alert animated:YES completion:nil];
+
         }
         
-        
+        // Add to data
         [self performSegueWithIdentifier:@"segueToMainFromSetup" sender:self];
     }];
 }

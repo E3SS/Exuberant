@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface NVLXboxLiveAPI : NSObject
+typedef void (^CompletionHandler)(id json, NSError *error);
+
++ (NVLXboxLiveAPI *)sharedInstance;
+
+- (void)getGamerTagProfile:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
+- (void)getGamertagXUID:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
 
 @end

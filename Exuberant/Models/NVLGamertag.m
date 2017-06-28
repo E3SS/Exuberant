@@ -7,12 +7,19 @@
 //
 
 #import "NVLGamertag.h"
+#import "NVLHaloApi.h"
 
 @implementation NVLGamertag
 
-//+(instancetype)initFromJSON:(id)json
-//{
-//    
-//}
+- (id)initFromDictionary:(NSDictionary *)dict
+{
+    self = [super init];
+    if (self) {
+        _displayName = dict[@"Gamertag"];
+        _xuid        = dict[@"id"];
+        _imageURL    = dict[@"GameDisplayPicRaw"];
+    }
+    return self;
+}
 
 @end

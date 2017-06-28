@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeFeedDataSource.h"
 
 @interface HomeViewController ()
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.dataSource = [[HomeFeedDataSource alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {

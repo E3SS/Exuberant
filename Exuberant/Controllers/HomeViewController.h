@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeFeedDataSource.h"
 
 @interface HomeViewController : UIViewController
+
+@property (strong, nonatomic) HomeFeedDataSource *dataSource;
 
 @end

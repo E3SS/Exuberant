@@ -11,8 +11,9 @@
 @interface NVLHaloApi : NSObject
 typedef void (^CompletionHandler)(id json, NSError *error);
 
-+(NVLHaloApi *)sharedInstance;
--(void)getArenaStats:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
--(BOOL)isNetworkConnected;
++ (NVLHaloApi *)sharedInstance;
+- (void)getArenaStats:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
+- (void)getMaps:(CompletionHandler)completionHandler;
+- (BOOL)isNetworkConnected;
 
 @end
