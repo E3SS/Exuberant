@@ -10,6 +10,7 @@
 
 @interface MatchFeedCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
 @property (weak, nonatomic) IBOutlet UILabel *matchLabel;
 
 @end

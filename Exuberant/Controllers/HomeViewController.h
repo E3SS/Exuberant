@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HomeFeedDataSource.h"
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) HomeFeedDataSource *dataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

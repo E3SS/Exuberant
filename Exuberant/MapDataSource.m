@@ -14,6 +14,7 @@
 @interface MapDataSource ()
 
 @property (strong, nonatomic) NSMutableDictionary *data;
+@property (strong, nonatomic) NSMutableDictionary *mapImages;
 
 @end
 
@@ -34,6 +35,7 @@
     self = [super init];
     if (self) {
         _data = [[NSMutableDictionary alloc] init];
+        _mapImages = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -46,6 +48,16 @@
 - (NVLHaloMap *)getMap:(NSString *)mapId
 {
     return [self.data objectForKey:mapId];
+}
+
+- (UIImage *)getImageFromMapId:(NSString *)mapId
+{
+    return [self.mapImages objectForKey:mapId];
+}
+
+- (void)addImage:(UIImage *)image forMapId:(NSString *)mapId
+{
+    [self.mapImages setObject:image forKey:mapId];
 }
 
 @end

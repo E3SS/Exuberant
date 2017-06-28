@@ -17,8 +17,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.dataSource = [[HomeFeedDataSource alloc] init];
+    self.dataSource.tableView = self.tableView;
+    
     self.tableView.dataSource = self.dataSource;
+
+    self.tableView.delegate = self;
     [self.tableView reloadData];
 }
 
@@ -26,5 +31,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 250.0;
+}
+
 
 @end

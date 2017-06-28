@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NVLPendingOperations.h"
 
 @interface HomeFeedDataSource : NSObject <UITableViewDataSource>
+
+@property (strong, nonatomic) NVLPendingOperations *pendingOperations;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end

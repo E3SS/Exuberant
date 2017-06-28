@@ -61,7 +61,8 @@ typedef void (^CompletionHandler)(id json, NSError *error);
 
 - (void)getPlayerMatchHistoryFor:(NSString *)player forMode:(NSString *)mode startIndex:(int)startIndex count:(int)count completionHandler:(CompletionHandler)completionHandler
 {
-    NSString *routeUrl = [NSString stringWithFormat:@"https://www.haloapi.com/stats/h5/players/%@/matches", player];
+    NSString *encodedGamertag = [player stringByAddingPercentEncodingWithAllowedCharacters: NSCharacterSet.URLPathAllowedCharacterSet];
+    NSString *routeUrl = [NSString stringWithFormat:@"https://www.haloapi.com/stats/h5/players/%@/matches", encodedGamertag];
     NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeUrl
                                                   withParameters:@{@"modes": mode,
                                                                    @"start": [NSString stringWithFormat:@"%i", startIndex],

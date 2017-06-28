@@ -101,7 +101,7 @@
         <!--Home View Controller-->
         <scene sceneID="PFC-Fi-yz4">
             <objects>
-                <viewController title="Home View Controller" id="K2e-Gx-747" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController title="Home View Controller" automaticallyAdjustsScrollViewInsets="NO" id="K2e-Gx-747" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sh1-lM-cyq"/>
                         <viewControllerLayoutGuide type="bottom" id="Dff-Py-jjK"/>
@@ -114,27 +114,37 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="matchFeedCell" id="v8I-lv-zFX" customClass="MatchFeedCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="matchFeedCell" rowHeight="250" id="v8I-lv-zFX" customClass="MatchFeedCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v8I-lv-zFX" id="Xpo-zC-J5t">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="igy-Lc-XXc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="150" id="exr-wO-Zbu"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9Y-c7-boK">
-                                                    <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                                    <rect key="frame" x="8" y="200" width="359" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="u9Y-c7-boK" secondAttribute="trailing" id="PBC-7X-fRQ"/>
-                                                <constraint firstItem="u9Y-c7-boK" firstAttribute="leading" secondItem="Xpo-zC-J5t" secondAttribute="leadingMargin" id="S6R-TE-urG"/>
-                                                <constraint firstItem="u9Y-c7-boK" firstAttribute="centerY" secondItem="Xpo-zC-J5t" secondAttribute="centerY" id="pfl-UK-oJK"/>
+                                                <constraint firstItem="igy-Lc-XXc" firstAttribute="leading" secondItem="Xpo-zC-J5t" secondAttribute="leading" id="0Zx-3I-18h"/>
+                                                <constraint firstAttribute="trailing" secondItem="igy-Lc-XXc" secondAttribute="trailing" id="IEX-Xn-Mvt"/>
+                                                <constraint firstItem="igy-Lc-XXc" firstAttribute="top" secondItem="Xpo-zC-J5t" secondAttribute="top" id="Ltn-rc-Ub4"/>
+                                                <constraint firstItem="u9Y-c7-boK" firstAttribute="top" secondItem="igy-Lc-XXc" secondAttribute="bottom" constant="50" id="jh2-1k-jaE"/>
+                                                <constraint firstItem="u9Y-c7-boK" firstAttribute="trailing" secondItem="Xpo-zC-J5t" secondAttribute="trailingMargin" id="pGb-Ho-Yau"/>
+                                                <constraint firstItem="u9Y-c7-boK" firstAttribute="leading" secondItem="Xpo-zC-J5t" secondAttribute="leadingMargin" id="qd5-vr-BiK"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="mapImageView" destination="igy-Lc-XXc" id="QNW-x5-vqY"/>
                                             <outlet property="matchLabel" destination="u9Y-c7-boK" id="HHn-yQ-PO2"/>
                                         </connections>
                                     </tableViewCell>
@@ -164,6 +174,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="sZb-Oe-Z9c" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="GzL-FF-A5u">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -301,6 +312,9 @@
             <point key="canvasLocation" x="2581.5999999999999" y="796.55172413793105"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Placeholder" width="1920" height="1080"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="D9U-cy-uFK"/>
     </inferredMetricsTieBreakers>

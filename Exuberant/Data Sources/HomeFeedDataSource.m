@@ -9,25 +9,67 @@
 #import "HomeFeedDataSource.h"
 #import "MatchFeedCell.h"
 #import "MatchDataSource.h"
+#import "MapDataSource.h"
 #import "NVLHaloMatch.h"
+#import "NVLPendingOperations.h"
+#import "NVLMapImageDownloader.h"
 
 @implementation HomeFeedDataSource
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _pendingOperations = [[NVLPendingOperations alloc] init];
+    }
+    return self;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return [[MatchDataSource sharedInstance] numberOfMatches];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MatchFeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"matchFeedCell" forIndexPath:indexPath];
-    
     NVLHaloMatch *match = [[MatchDataSource sharedInstance] getMatch:indexPath.row];
-    [cell.matchLabel setText: [match matchId]];
-    NSLog(@"I'm here");
+    UIImage *mapImage = [[MapDataSource sharedInstance] getImageFromMapId: match.mapId];
     
+    if (mapImage == nil) {
+        [self downloadMapImageForMatch:match forIndexPath:indexPath];
+    } else {
+        [[cell mapImageView] setImage:mapImage];
+    }
+    
+    [cell.matchLabel setText: [match matchId]];
     return cell;
+}
+
+- (void)downloadMapImageForMatch:(NVLHaloMatch *)match forIndexPath:(NSIndexPath *)indexPath
+{
+    if ([[self.pendingOperations downloadsInProgress] objectForKey:indexPath]) {
+        return;
+    }
+    
+    NVLMapImageDownloader *imageDownloader = [[NVLMapImageDownloader alloc] initWithMapId: match.mapId];
+    
+    __weak HomeFeedDataSource *weakSelf = self;
+    __weak NVLMapImageDownloader *weakImageDownloader = imageDownloader;
+    
+    imageDownloader.completionBlock = ^() {
+        if ([weakImageDownloader isCancelled]) {
+            return;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^() {
+            [[[weakSelf pendingOperations] downloadsInProgress] removeObjectForKey:indexPath];
+            [[weakSelf tableView] reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        });
+    };
+    
+    [[[self pendingOperations] downloadsInProgress] setObject:imageDownloader forKey:indexPath];
+    [[[self pendingOperations] downloadOperations] addOperation:imageDownloader];
 }
 
 @end

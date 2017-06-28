@@ -40,7 +40,6 @@
 
 - (IBAction)submit:(id)sender {
     NSString *gamertag = [self.textField text];
-    
     [[NVLXboxLiveAPI sharedInstance] getGamerTagProfile:gamertag completionHandler:^(NSDictionary *json, NSError *error) {
         if (error) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
@@ -48,9 +47,9 @@
             [alert addAction:alertAction];
             
             [self presentViewController:alert animated:YES completion:nil];
-
+            return;
         }
-        
+                
         NVLGamertag *gamertag = [[NVLGamertag alloc] initFromDictionary:json];
         [[GamerDataSource sharedInstance] addGamertag:gamertag completionHandler:^() {
             [self performSegueWithIdentifier:@"segueToMainFromSetup" sender:self];

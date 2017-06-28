@@ -58,6 +58,7 @@ typedef void (^CompletionHandler)(id json, NSError *error);
             NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeURL withParameters:nil];
             
             NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                
                 if (error) {
                     completionHandler(nil, error);
                 } else {
