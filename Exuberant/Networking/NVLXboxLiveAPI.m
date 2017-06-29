@@ -48,36 +48,12 @@ typedef void (^CompletionHandler)(id json, NSError *error);
 {
     
     NSString *encodedGamertag = [gamertag stringByAddingPercentEncodingWithAllowedCharacters: NSCharacterSet.URLPathAllowedCharacterSet];
-    [self getGamertagXUID:encodedGamertag completionHandler:^(NSDictionary *json, NSError *error) {
-        if (error) {
-            completionHandler(nil, error);
-        } else {
-            NSString *routeURLWithXUID = [@"https://xboxapi.com/v2/" stringByAppendingString: json[@"xuid"]];
-            NSString *routeURL = [routeURLWithXUID stringByAppendingString:@"/profile"];
-            
-            NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeURL withParameters:nil];
-            
-            NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-                
-                if (error) {
-                    completionHandler(nil, error);
-                } else {
-                    completionHandler(responseObject, nil);
-                }
-            }];
-            
-            [dataTask resume];
-        }
-    }];
-}
-
-- (void)getGamertagXUID:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
-{
-    NSString *routeURL = [@"https://xboxapi.com/v2/xuid/" stringByAppendingString:gamertag];
-
-    NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeURL withParameters:nil];
+    NSString *routeURL = @"https://exuberant-api.herokuapp.com/user/profile";
+    
+    NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeURL withParameters:@{@"gamertag": encodedGamertag}];
     
     NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        
         if (error) {
             completionHandler(nil, error);
         } else {
@@ -86,14 +62,14 @@ typedef void (^CompletionHandler)(id json, NSError *error);
     }];
     
     [dataTask resume];
+
 }
 
 - (NSMutableURLRequest *)getAuthorizedURLRequest:(NSString *)route withParameters:(NSDictionary *)parameters
 {
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer]
                                     requestWithMethod:@"GET" URLString:route parameters:parameters error:nil];
-    [request setValue:self.apiKey forHTTPHeaderField:@"X-AUTH"];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request setValue:self.apiKey forHTTPHeaderField:@"x-api-key"];
     return request;
 }
 

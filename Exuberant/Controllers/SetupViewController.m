@@ -30,14 +30,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"segueToMainFromSetup"]) {
-        
-    }
-}
-
-
 - (IBAction)submit:(id)sender {
     NSString *gamertag = [self.textField text];
     [[NVLXboxLiveAPI sharedInstance] getGamerTagProfile:gamertag completionHandler:^(NSDictionary *json, NSError *error) {
@@ -49,7 +41,7 @@
             [self presentViewController:alert animated:YES completion:nil];
             return;
         }
-                
+        
         NVLGamertag *gamertag = [[NVLGamertag alloc] initFromDictionary:json];
         [[GamerDataSource sharedInstance] addGamertag:gamertag completionHandler:^() {
             [self performSegueWithIdentifier:@"segueToMainFromSetup" sender:self];

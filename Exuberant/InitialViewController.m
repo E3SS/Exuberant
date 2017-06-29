@@ -41,6 +41,7 @@
         }
         
         for (int i = 0; i < [json count]; i++) {
+            
             NVLHaloMap *map = [[NVLHaloMap alloc] initFromDictionary: [json objectAtIndex:i]];
             [[MapDataSource sharedInstance] addMap: map];
         }
@@ -49,6 +50,13 @@
     }];
     
     dispatch_group_notify(dataGroup, dispatch_get_main_queue(), ^(void) {
+        NSError *error = mapError;
+        if (error) {
+            [NSException raise:@"HaloAPIError" format:@"%@", error.localizedDescription];
+        }
+        
+        
+        
         // If no followers and first load
         // Need to check for errors on load
         if (true) {

@@ -45,7 +45,7 @@ typedef void (^CompletionHandler)(id json, NSError *error);
 
 -(void)getArenaServiceRecord:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
 {  
-    NSString *routeUrl = @"https://www.haloapi.com/stats/h5/servicerecords/arena";
+    NSString *routeUrl = @"https://exuberant-api.herokuapp.com/stats/servicerecord";
     NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeUrl withParameters:@{@"players": gamertag}];
     
     NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest: request completionHandler: ^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -62,9 +62,10 @@ typedef void (^CompletionHandler)(id json, NSError *error);
 - (void)getPlayerMatchHistoryFor:(NSString *)player forMode:(NSString *)mode startIndex:(int)startIndex count:(int)count completionHandler:(CompletionHandler)completionHandler
 {
     NSString *encodedGamertag = [player stringByAddingPercentEncodingWithAllowedCharacters: NSCharacterSet.URLPathAllowedCharacterSet];
-    NSString *routeUrl = [NSString stringWithFormat:@"https://www.haloapi.com/stats/h5/players/%@/matches", encodedGamertag];
+    NSString *routeUrl = @"https://exuberant-api.herokuapp.com/stats/matches";
     NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeUrl
-                                                  withParameters:@{@"modes": mode,
+                                                  withParameters:@{@"player": encodedGamertag,
+                                                                   @"modes": mode,
                                                                    @"start": [NSString stringWithFormat:@"%i", startIndex],
                                                                    @"count": [NSString stringWithFormat:@"%i", count]}];
     NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request completionHandler: ^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -82,7 +83,7 @@ typedef void (^CompletionHandler)(id json, NSError *error);
 
 - (void)getMaps:(CompletionHandler)completionHandler
 {
-    NSString *routeUrl = @"https://www.haloapi.com/metadata/h5/metadata/maps";
+    NSString *routeUrl = @"https://exuberant-api.herokuapp.com/metadata/maps";
     NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeUrl withParameters:nil];
     
     NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
@@ -102,7 +103,7 @@ typedef void (^CompletionHandler)(id json, NSError *error);
 {
     NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer]
                                     requestWithMethod:@"GET" URLString:route parameters:parameters error:nil];
-    [request setValue:self.apiKey forHTTPHeaderField:@"Ocp-Apim-Subscription-Key"];
+    [request setValue:self.apiKey forHTTPHeaderField:@"x-api-key"];
     return request;
 }
 
