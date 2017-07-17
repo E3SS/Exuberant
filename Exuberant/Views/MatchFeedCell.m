@@ -39,10 +39,10 @@
             [self.matchResultLabel setText:@"Did not finish"];
             break;
         case 1:
-            [self.matchResultLabel setText:@"Tied"];
+            [self.matchResultLabel setText:@"Loss"];
             break;
         case 2:
-            [self.matchResultLabel setText:@"Loss"];
+            [self.matchResultLabel setText:@"Tied"];
             break;
         case 3:
             [self.matchResultLabel setText:@"Win"];

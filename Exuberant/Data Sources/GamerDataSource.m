@@ -52,9 +52,14 @@
             
             NVLHaloMatch *match = [[NVLHaloMatch alloc] initWithDictionary: [results objectAtIndex:i] forGamertag: gamertag];
             
-            [[MatchDataSource sharedInstance] addMatch:match];
+            NSNumber *result = [match.queriedPlayer objectForKey:@"Result"];
+
+            // Don't include games you quit out of
+            if (result.integerValue != 0) {
+                [[MatchDataSource sharedInstance] addMatch:match];
+                [[gamertag matches] addObject:match];
+            }
             
-            [[gamertag matches] addObject:match];
         }
         
         [self.data addObject:gamertag];
