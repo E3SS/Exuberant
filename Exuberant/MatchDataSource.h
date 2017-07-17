@@ -13,7 +13,7 @@
 
 +(instancetype)sharedInstance;
 - (void)addMatch:(NVLHaloMatch *)match;
-- (NVLHaloMatch *)getMatch:(NSInteger)matchId;
+- (NVLHaloMatch *)getMatch:(NSInteger)index;
 - (NSUInteger)numberOfMatches;
 
 @end

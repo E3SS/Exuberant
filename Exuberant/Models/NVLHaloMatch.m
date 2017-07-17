@@ -11,15 +11,20 @@
 
 @implementation NVLHaloMatch
 
-- (id)initWithDictionary:(NSDictionary *)dict forGamertag:(NVLGamertag *)gamertag
+- (id)initWithDictionary:(id)dict forGamertag:(NVLGamertag *)gamertag
 {
     self = [super init];
     if (self) {
-        // FIXME: - Add the rest of the data for a match
-        _matchId = [[dict objectForKey:@"Id"] objectForKey:@"MatchId"];
-        _gameMode = [[dict objectForKey:@"Id"] objectForKey:@"GameMode"];
-        _mapId = [dict objectForKey:@"MapId"];
-        _gamertag = gamertag;
+        NSDictionary *results = dict;
+        
+        _matchId = [results objectForKey:@"id"];
+        _mapId = [results objectForKey:@"mapId"];
+        _mapVarient = [results objectForKey:@"mapVariant"];
+        _gameBaseVariantId = [results objectForKey:@"gameBaseVariantId"];
+        _gameVariant = [results objectForKey:@"gameVariant"];
+        _isTeamGame = [results objectForKey:@"isTeamGame"];
+        _queriedPlayer = [results objectForKey:@"queriedPlayer"];
+        _seasonId = [results objectForKey:@"seasonId"];
     }
     return self;
 }

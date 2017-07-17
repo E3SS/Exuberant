@@ -7,9 +7,11 @@
 //
 
 #import "InitialViewController.h"
-#import "NVLHaloApi.h"
+#import "NVLExuberantAPI.h"
 #import "NVLHaloMap.h"
+#import "NVLHaloGameVariant.h"
 #import "MapDataSource.h"
+#import "GameVariantDataSource.h"
 
 @interface InitialViewController ()
 
@@ -33,7 +35,7 @@
     dispatch_group_t dataGroup = dispatch_group_create();
     
     dispatch_group_enter(dataGroup);
-    [[NVLHaloApi sharedInstance] getMaps:^(NSArray *json, NSError *error) {
+    [[NVLExuberantAPI sharedInstance] getMaps:^(NSArray *json, NSError *error) {
         if (error) {
             mapError = error;
             dispatch_group_leave(dataGroup);
@@ -41,7 +43,6 @@
         }
         
         for (int i = 0; i < [json count]; i++) {
-            
             NVLHaloMap *map = [[NVLHaloMap alloc] initFromDictionary: [json objectAtIndex:i]];
             [[MapDataSource sharedInstance] addMap: map];
         }
@@ -49,13 +50,28 @@
         dispatch_group_leave(dataGroup);
     }];
     
+    dispatch_group_enter(dataGroup);
+    [[NVLExuberantAPI sharedInstance] getGameBaseVariants:^(NSArray *json, NSError *error) {
+        if (error) {
+            mapError = error;
+            dispatch_group_leave(dataGroup);
+            return;
+        }
+        
+        for (int i = 0; i < [json count]; i++) {
+            NVLHaloGameVariant *gameVariant = [[NVLHaloGameVariant alloc] initFromDictionary:[json objectAtIndex:i]];
+            [[GameVariantDataSource sharedInstance] addGameVariant:gameVariant];
+        }
+        
+        dispatch_group_leave(dataGroup);
+    }];
+    
     dispatch_group_notify(dataGroup, dispatch_get_main_queue(), ^(void) {
         NSError *error = mapError;
         if (error) {
+            
             [NSException raise:@"HaloAPIError" format:@"%@", error.localizedDescription];
         }
-        
-        
         
         // If no followers and first load
         // Need to check for errors on load

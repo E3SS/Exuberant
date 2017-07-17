@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NVLHaloMatch.h"
 
 @interface MatchFeedCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
 @property (weak, nonatomic) IBOutlet UILabel *matchLabel;
+@property (weak, nonatomic) IBOutlet UILabel *matchResultLabel;
+@property (weak, nonatomic) IBOutlet UILabel *killCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deathCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *assistCountLabel;
+
+- (void)configure:(NVLHaloMatch *)match;
 
 @end

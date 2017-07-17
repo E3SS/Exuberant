@@ -7,8 +7,8 @@
 //
 
 #import "SetupViewController.h"
-#import "NVLXboxLiveAPI.h"
-#import "NVLHaloApi.h"
+#import "NVLExuberantAPI.h"
+#import "NVLExuberantAPI.h"
 #import "NVLGamertag.h"
 
 // Replace with CoreData
@@ -32,7 +32,7 @@
 
 - (IBAction)submit:(id)sender {
     NSString *gamertag = [self.textField text];
-    [[NVLXboxLiveAPI sharedInstance] getGamerTagProfile:gamertag completionHandler:^(NSDictionary *json, NSError *error) {
+    [[NVLExuberantAPI sharedInstance] getGamerTagProfile:gamertag completionHandler:^(id json, NSError *error) {
         if (error) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil ];
@@ -43,6 +43,7 @@
         }
         
         NVLGamertag *gamertag = [[NVLGamertag alloc] initFromDictionary:json];
+        
         [[GamerDataSource sharedInstance] addGamertag:gamertag completionHandler:^() {
             [self performSegueWithIdentifier:@"segueToMainFromSetup" sender:self];
         }];

@@ -12,17 +12,13 @@
 @interface NVLHaloMatch : NSObject
 
 @property (strong, nonatomic) NSString *matchId;
-@property (strong, nonatomic) NSString *gameMode;
 @property (strong, nonatomic) NSString *mapId;
-@property (weak,   nonatomic) NVLGamertag *gamertag;
-
-// Make a number property
-@property (strong, nonatomic) NSString *totalKills;
-@property (strong, nonatomic) NSString *totalDeaths;
-
-// FIXME: - Implement game times
-@property (strong, nonatomic) NSString *matchDuration;
-@property (strong, nonatomic) NSString *matchCompletedDate;
+@property (strong, nonatomic) NSString *mapVarient;
+@property (strong, nonatomic) NSString *gameBaseVariantId;
+@property (strong, nonatomic) NSString *gameVariant;
+@property (nonatomic) BOOL isTeamGame;
+@property (strong, nonatomic) NSDictionary *queriedPlayer;
+@property (strong, nonatomic) NSString *seasonId;
 
 - (id)initWithDictionary:(NSDictionary *)dict forGamertag:(NVLGamertag *)gamertag;
 

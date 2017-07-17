@@ -25,6 +25,11 @@
     return self;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [[MatchDataSource sharedInstance] numberOfMatches];
@@ -41,8 +46,8 @@
     } else {
         [[cell mapImageView] setImage:mapImage];
     }
-    
-    [cell.matchLabel setText: [match matchId]];
+
+    [cell configure:match];
     return cell;
 }
 

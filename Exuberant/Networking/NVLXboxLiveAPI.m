@@ -44,26 +44,7 @@ typedef void (^CompletionHandler)(id json, NSError *error);
     return self;
 }
 
-- (void)getGamerTagProfile:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
-{
-    
-    NSString *encodedGamertag = [gamertag stringByAddingPercentEncodingWithAllowedCharacters: NSCharacterSet.URLPathAllowedCharacterSet];
-    NSString *routeURL = @"https://exuberant-api.herokuapp.com/user/profile";
-    
-    NSMutableURLRequest *request = [self getAuthorizedURLRequest:routeURL withParameters:@{@"gamertag": encodedGamertag}];
-    
-    NSURLSessionDataTask *dataTask = [self.manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        
-        if (error) {
-            completionHandler(nil, error);
-        } else {
-            completionHandler(responseObject, nil);
-        }
-    }];
-    
-    [dataTask resume];
 
-}
 
 - (NSMutableURLRequest *)getAuthorizedURLRequest:(NSString *)route withParameters:(NSDictionary *)parameters
 {
