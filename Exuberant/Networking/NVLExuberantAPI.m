@@ -7,6 +7,7 @@
 //
 
 #import "NVLExuberantAPI.h"
+#import <UIKit/UIKit.h>
 
 @interface NVLExuberantAPI ()
 
@@ -17,6 +18,7 @@
 @implementation NVLExuberantAPI
 
 typedef void (^CompletionHandler)(id json, NSError *error);
+typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 + (instancetype)sharedInstance
 {
@@ -60,6 +62,17 @@ typedef void (^CompletionHandler)(id json, NSError *error);
     }];
 }
 
+- (void)getPlaylists:(CompletionHandler)completionHandler
+{
+    [self executeURLRequest:@"http://localhost:1337/h5/playlists" withParameters:nil withCompletion:^(id json, NSError *error) {
+        if (error != nil) {
+            completionHandler(nil, error);
+        }
+        
+        completionHandler(json, error);
+    }];
+}
+
 -(void)getArenaServiceRecord:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
 {
     [self executeURLRequest:@"http://localhost:1337/h5/servicerecord" withParameters:@{@"players": gamertag} withCompletion:^(id json, NSError *error) {
@@ -98,10 +111,30 @@ typedef void (^CompletionHandler)(id json, NSError *error);
     }];
 }
 
-- (void)executeURLRequest:(NSString *)urlStr withParameters:(NSDictionary *)parameters withCompletion:(CompletionHandler)completion
+- (void)getSpartanImage:(NSString *)gamertag withSize:(NSString *)size completion:(ImageCompletionHandler)completionHandler
 {
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:self.configuration];
-    
+    [self executeImageRequest:@"http://localhost:1337/h5/spartan" withParameters:@{@"player": gamertag, @"size": @"512"} withCompletion:^(UIImage *image, NSError *error) {
+        if (error != nil) {
+            completionHandler(nil, error);
+        }
+        
+        completionHandler(image, nil);
+    }];
+}
+
+- (void)getEmblemImage:(NSString *)gamertag withSize:(NSString *)size completion:(ImageCompletionHandler)completionHandler
+{
+    [self executeImageRequest:@"http://localhost:1337/h5/emblem" withParameters:@{@"player": gamertag, @"size": size} withCompletion:^(UIImage *image, NSError *error) {
+        if (error != nil) {
+            completionHandler(nil, error);
+        }
+        
+        completionHandler(image, nil);
+    }];
+}
+
+- (NSURL *)buildURLWith:(NSString *)urlStr andParameters:(NSDictionary *)parameters
+{
     NSURLComponents *components = [NSURLComponents componentsWithString:urlStr];
     NSMutableArray *queryItems = [[NSMutableArray alloc] init];
     
@@ -115,9 +148,19 @@ typedef void (^CompletionHandler)(id json, NSError *error);
     
     components.queryItems = queryItems;
     
-    [[session dataTaskWithURL:components.URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    return components.URL;
+}
+
+- (void)executeURLRequest:(NSString *)urlStr withParameters:(NSDictionary *)parameters withCompletion:(CompletionHandler)completion
+{
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:self.configuration];
+    NSURL *url = [self buildURLWith:urlStr andParameters:parameters];
+    
+    [[session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error != nil) {
-            completion(nil, error);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, error);
+            });
         }
         
         NSError *jsonParsingError = nil;
@@ -129,6 +172,29 @@ typedef void (^CompletionHandler)(id json, NSError *error);
         
     }] resume];
 
+}
+
+- (void)executeImageRequest:(NSString *)urlStr withParameters:(NSDictionary *)parameters withCompletion:(ImageCompletionHandler)completion
+{
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:self.configuration];
+    NSURL *url = [self buildURLWith:urlStr andParameters:parameters];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60];
+    
+    [[session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error != nil) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil, error);
+            });
+            
+        }
+        
+        NSData *imageData = [NSData dataWithContentsOfURL:location];
+        UIImage *image = [UIImage imageWithData:imageData];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completion(image, nil);
+        });
+    }] resume];
 }
 
 @end

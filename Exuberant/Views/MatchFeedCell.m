@@ -11,6 +11,10 @@
 #import "ExuberantEnums.h"
 #import "MapDataSource.h"
 #import "GameVariantDataSource.h"
+#import "NVLGamertag.h"
+#import "GamerDataSource.h"
+#import "NVLExuberantAPI.h"
+#import "PlaylistDataSource.h"
 
 @implementation MatchFeedCell
 
@@ -27,7 +31,28 @@
 
 - (void)configure:(NVLHaloMatch *)match
 {
+    // clean up
+    self.emblemImageView.image = nil;
+    
     NSString *variantName = [[[GameVariantDataSource sharedInstance] getGameVariant:match.gameBaseVariantId] name];
+    NSString *gamertag = match.queriedPlayer[@"gamertag"];
+    
+    NVLGamertag *gamerProfile = [[GamerDataSource sharedInstance] getGamertagProfile: gamertag];
+    
+    if (gamerProfile.emblemImage == nil) {
+        [[NVLExuberantAPI sharedInstance] getEmblemImage:gamerProfile.displayName withSize:@"512" completion:^(UIImage *image, NSError *error) {
+            gamerProfile.emblemImage = image;
+            self.emblemImageView.image = gamerProfile.emblemImage;
+        }];
+    } else {
+        self.emblemImageView.image = gamerProfile.emblemImage;
+    }
+    
+    [self.gamertagLabel setText:gamerProfile.displayName];
+    
+    NSString *playlistName = [[[PlaylistDataSource sharedInstance] getPlaylist:match.playlistId] name];
+    [self.playlistLabel setText:playlistName];
+    
     NSString *mapName = [[[MapDataSource sharedInstance] getMap:match.mapId] displayName];
     NSString *matchLabelText = [NSString stringWithFormat:@"%@ on %@", variantName, mapName];
     [self.matchLabel setText:matchLabelText];

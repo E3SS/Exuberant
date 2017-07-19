@@ -11,7 +11,11 @@
 
 @interface GamerDataSource : NSObject
 
+@property (strong, nonatomic) NVLGamertag *endUser;
+
 +(instancetype)sharedInstance;
 - (void)addGamertag:(NVLGamertag *)gamertag completionHandler:(void (^)())completionHandler;
+- (void)addEndUserGamertag:(NVLGamertag *)gamertag;
+- (NVLGamertag *)getGamertagProfile:(NSString *)gamertagName;
 
 @end

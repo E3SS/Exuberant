@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface NVLGamertag : NSObject
 
@@ -14,6 +15,9 @@
 @property (strong, nonatomic) NSString *xuid;
 @property (strong, nonatomic) NSString *imageURL;
 @property (strong, nonatomic) NSMutableArray *matches;
+@property (nonatomic) BOOL isEndUsersProfile;
+@property (strong, nonatomic) UIImage *spartanImage;
+@property (strong, nonatomic) UIImage *emblemImage;
 
 - (id)initFromDictionary:(NSDictionary *)dict;
 

@@ -16,7 +16,7 @@
 
 @interface GamerDataSource ()
 
-@property (strong, nonatomic) NSMutableArray *data;
+@property (strong, nonatomic) NSMutableDictionary *data;
 
 @end
 
@@ -36,7 +36,7 @@
 {
     self = [super init];
     if (self) {
-        _data = [[NSMutableArray alloc] init];
+        _data = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -62,10 +62,21 @@
             
         }
         
-        [self.data addObject:gamertag];
+        [self.data setObject:gamertag forKey:gamertag.displayName];
         
         completionHandler();
     }];
 }
+
+- (void)addEndUserGamertag:(NVLGamertag *)gamertag
+{
+    self.endUser = gamertag;
+}
+
+- (NVLGamertag *)getGamertagProfile:(NSString *)gamertagName
+{
+    return [self.data objectForKey:gamertagName];
+}
+
 
 @end

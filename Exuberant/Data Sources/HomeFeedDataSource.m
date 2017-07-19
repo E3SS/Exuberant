@@ -40,6 +40,7 @@
     MatchFeedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"matchFeedCell" forIndexPath:indexPath];
     NVLHaloMatch *match = [[MatchDataSource sharedInstance] getMatch:indexPath.row];
     UIImage *mapImage = [[MapDataSource sharedInstance] getImageFromMapId: match.mapId];
+    cell.mapImageView.image = nil;
     
     if (mapImage == nil) {
         [self downloadMapImageForMatch:match forIndexPath:indexPath];

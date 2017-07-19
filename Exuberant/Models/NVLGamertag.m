@@ -19,6 +19,9 @@
         _xuid        = dict[@"id"];
         _imageURL    = dict[@"GameDisplayPicRaw"];
         _matches     = [[NSMutableArray alloc] init];
+        _isEndUsersProfile = NO;
+        _spartanImage = nil;
+        _emblemImage = nil;
     }
     
     return self;

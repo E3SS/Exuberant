@@ -10,4 +10,7 @@
 
 @interface ProfileViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *spartanImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *emblemImageView;
+
 @end

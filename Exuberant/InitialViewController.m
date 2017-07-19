@@ -10,8 +10,10 @@
 #import "NVLExuberantAPI.h"
 #import "NVLHaloMap.h"
 #import "NVLHaloGameVariant.h"
+#import "NVLHaloPlaylist.h"
 #import "MapDataSource.h"
 #import "GameVariantDataSource.h"
+#import "PlaylistDataSource.h"
 
 @interface InitialViewController ()
 
@@ -61,6 +63,22 @@
         for (int i = 0; i < [json count]; i++) {
             NVLHaloGameVariant *gameVariant = [[NVLHaloGameVariant alloc] initFromDictionary:[json objectAtIndex:i]];
             [[GameVariantDataSource sharedInstance] addGameVariant:gameVariant];
+        }
+        
+        dispatch_group_leave(dataGroup);
+    }];
+    
+    dispatch_group_enter(dataGroup);
+    [[NVLExuberantAPI sharedInstance] getPlaylists:^(NSArray *json, NSError *error) {
+        if (error) {
+            mapError = error;
+            dispatch_group_leave(dataGroup);
+            return;
+        }
+        
+        for (int i = 0; i < [json count]; i++) {
+            NVLHaloPlaylist *playlist = [[NVLHaloPlaylist alloc] initFromDictionary:[json objectAtIndex:i]];
+            [[PlaylistDataSource sharedInstance] addPlaylist:playlist];
         }
         
         dispatch_group_leave(dataGroup);

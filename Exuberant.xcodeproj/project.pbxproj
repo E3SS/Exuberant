@@ -27,6 +27,9 @@
 		AC6603281F034B9500056585 /* MatchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6603271F034B9500056585 /* MatchDataSource.m */; };
 		AC7E9BAF1F04254B00188F4E /* NVLPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9BAE1F04254B00188F4E /* NVLPendingOperations.m */; };
 		AC7E9BB21F04297100188F4E /* NVLMapImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9BB11F04297100188F4E /* NVLMapImageDownloader.m */; };
+		ACA87C441F1E80FE00842774 /* NVLHaloServiceRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C431F1E80FE00842774 /* NVLHaloServiceRecord.m */; };
+		ACA87C471F1EF0EE00842774 /* PlaylistDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C461F1EF0EE00842774 /* PlaylistDataSource.m */; };
+		ACA87C4A1F1EF31D00842774 /* NVLHaloPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C491F1EF31D00842774 /* NVLHaloPlaylist.m */; };
 		ACF0B7B01F192AB400B084EB /* NVLHaloGameVariant.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF0B7AF1F192AB400B084EB /* NVLHaloGameVariant.m */; };
 		ACF0B7B31F192C7700B084EB /* NVLExuberantAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF0B7B21F192C7700B084EB /* NVLExuberantAPI.m */; };
 		ACF0B7B61F195A3100B084EB /* GameVariantDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF0B7B51F195A3100B084EB /* GameVariantDataSource.m */; };
@@ -72,6 +75,12 @@
 		AC7E9BAE1F04254B00188F4E /* NVLPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLPendingOperations.m; path = Networking/NVLPendingOperations.m; sourceTree = "<group>"; };
 		AC7E9BB01F04297100188F4E /* NVLMapImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLMapImageDownloader.h; path = Networking/NVLMapImageDownloader.h; sourceTree = "<group>"; };
 		AC7E9BB11F04297100188F4E /* NVLMapImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLMapImageDownloader.m; path = Networking/NVLMapImageDownloader.m; sourceTree = "<group>"; };
+		ACA87C421F1E80FE00842774 /* NVLHaloServiceRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLHaloServiceRecord.h; path = Models/NVLHaloServiceRecord.h; sourceTree = "<group>"; };
+		ACA87C431F1E80FE00842774 /* NVLHaloServiceRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLHaloServiceRecord.m; path = Models/NVLHaloServiceRecord.m; sourceTree = "<group>"; };
+		ACA87C451F1EF0EE00842774 /* PlaylistDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaylistDataSource.h; path = "Data Sources/PlaylistDataSource.h"; sourceTree = "<group>"; };
+		ACA87C461F1EF0EE00842774 /* PlaylistDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistDataSource.m; path = "Data Sources/PlaylistDataSource.m"; sourceTree = "<group>"; };
+		ACA87C481F1EF31D00842774 /* NVLHaloPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLHaloPlaylist.h; path = Models/NVLHaloPlaylist.h; sourceTree = "<group>"; };
+		ACA87C491F1EF31D00842774 /* NVLHaloPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLHaloPlaylist.m; path = Models/NVLHaloPlaylist.m; sourceTree = "<group>"; };
 		ACF0B7AE1F192AB400B084EB /* NVLHaloGameVariant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLHaloGameVariant.h; path = Models/NVLHaloGameVariant.h; sourceTree = "<group>"; };
 		ACF0B7AF1F192AB400B084EB /* NVLHaloGameVariant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLHaloGameVariant.m; path = Models/NVLHaloGameVariant.m; sourceTree = "<group>"; };
 		ACF0B7B11F192C7700B084EB /* NVLExuberantAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLExuberantAPI.h; path = Networking/NVLExuberantAPI.h; sourceTree = "<group>"; };
@@ -187,6 +196,10 @@
 				AC6603201F0344E900056585 /* NVLHaloMatch.m */,
 				ACF0B7AE1F192AB400B084EB /* NVLHaloGameVariant.h */,
 				ACF0B7AF1F192AB400B084EB /* NVLHaloGameVariant.m */,
+				ACA87C421F1E80FE00842774 /* NVLHaloServiceRecord.h */,
+				ACA87C431F1E80FE00842774 /* NVLHaloServiceRecord.m */,
+				ACA87C481F1EF31D00842774 /* NVLHaloPlaylist.h */,
+				ACA87C491F1EF31D00842774 /* NVLHaloPlaylist.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -220,6 +233,8 @@
 				AC6603271F034B9500056585 /* MatchDataSource.m */,
 				ACF0B7B41F195A3100B084EB /* GameVariantDataSource.h */,
 				ACF0B7B51F195A3100B084EB /* GameVariantDataSource.m */,
+				ACA87C451F1EF0EE00842774 /* PlaylistDataSource.h */,
+				ACA87C461F1EF0EE00842774 /* PlaylistDataSource.m */,
 			);
 			name = "Mock Database Objects";
 			sourceTree = "<group>";
@@ -322,14 +337,17 @@
 				AC6603061F02C7F000056585 /* HomeViewController.m in Sources */,
 				AC6603141F02F26200056585 /* HomeFeedDataSource.m in Sources */,
 				AC66030C1F02C87000056585 /* SearchViewController.m in Sources */,
+				ACA87C441F1E80FE00842774 /* NVLHaloServiceRecord.m in Sources */,
 				ACF0B7B01F192AB400B084EB /* NVLHaloGameVariant.m in Sources */,
 				AC6602E21F017E3A00056585 /* AppDelegate.m in Sources */,
 				AC7E9BB21F04297100188F4E /* NVLMapImageDownloader.m in Sources */,
 				AC6602FF1F02100700056585 /* SetupViewController.m in Sources */,
 				AC7E9BAF1F04254B00188F4E /* NVLPendingOperations.m in Sources */,
 				AC6603241F03493E00056585 /* MatchFeedCell.m in Sources */,
+				ACA87C471F1EF0EE00842774 /* PlaylistDataSource.m in Sources */,
 				AC6602DF1F017E3A00056585 /* main.m in Sources */,
 				ACF0B7B61F195A3100B084EB /* GameVariantDataSource.m in Sources */,
+				ACA87C4A1F1EF31D00842774 /* NVLHaloPlaylist.m in Sources */,
 				AC66031D1F02FA0C00056585 /* NVLHaloMap.m in Sources */,
 				AC66031A1F02F9AF00056585 /* MapDataSource.m in Sources */,
 				AC6603031F02113A00056585 /* NVLGamertag.m in Sources */,

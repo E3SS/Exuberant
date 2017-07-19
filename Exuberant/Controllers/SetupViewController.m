@@ -44,7 +44,12 @@
         
         NVLGamertag *gamertag = [[NVLGamertag alloc] initFromDictionary:json];
         
+        // This is how we track who the end user is.
+        gamertag.isEndUsersProfile = YES;
+        [[GamerDataSource sharedInstance] addEndUserGamertag:gamertag];
+        
         [[GamerDataSource sharedInstance] addGamertag:gamertag completionHandler:^() {
+            
             [self performSegueWithIdentifier:@"segueToMainFromSetup" sender:self];
         }];
     }];

@@ -25,6 +25,7 @@
         _isTeamGame = [results objectForKey:@"isTeamGame"];
         _queriedPlayer = [results objectForKey:@"queriedPlayer"];
         _seasonId = [results objectForKey:@"seasonId"];
+        _playlistId = [results objectForKey:@"playlistId"];
     }
     return self;
 }

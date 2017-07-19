@@ -12,6 +12,9 @@
 @interface MatchFeedCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *mapImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *emblemImageView;
+@property (weak, nonatomic) IBOutlet UILabel *gamertagLabel;
+@property (weak, nonatomic) IBOutlet UILabel *playlistLabel;
 @property (weak, nonatomic) IBOutlet UILabel *matchLabel;
 @property (weak, nonatomic) IBOutlet UILabel *matchResultLabel;
 @property (weak, nonatomic) IBOutlet UILabel *killCountLabel;

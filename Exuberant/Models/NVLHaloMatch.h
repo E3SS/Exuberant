@@ -19,6 +19,7 @@
 @property (nonatomic) BOOL isTeamGame;
 @property (strong, nonatomic) NSDictionary *queriedPlayer;
 @property (strong, nonatomic) NSString *seasonId;
+@property (strong, nonatomic) NSString *playlistId;
 
 - (id)initWithDictionary:(NSDictionary *)dict forGamertag:(NVLGamertag *)gamertag;
 

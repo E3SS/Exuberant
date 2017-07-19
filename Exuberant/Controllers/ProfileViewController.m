@@ -7,8 +7,15 @@
 //
 
 #import "ProfileViewController.h"
+#import "NVLGamertag.h"
+#import "NVLHaloServiceRecord.h"
+#import "GamerDataSource.h"
+#import "NVLExuberantAPI.h"
 
 @interface ProfileViewController ()
+
+@property (strong, nonatomic) NVLGamertag *profile;
+@property (strong, nonatomic) NVLHaloServiceRecord *serviceRecord;
 
 @end
 
@@ -16,7 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    if (self.profile == nil) {
+        self.profile = [[GamerDataSource sharedInstance] endUser];
+    }
+    
+    [self setBackgroundImages];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +36,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setBackgroundImages
+{
+    [[NVLExuberantAPI sharedInstance] getSpartanImage:self.profile.displayName withSize:@"512" completion:^(UIImage *image, NSError *error) {
+        self.spartanImageView.image = image;
+    }];
+    
+    [[NVLExuberantAPI sharedInstance] getEmblemImage:self.profile.displayName withSize:@"512" completion:^(UIImage *image, NSError *error) {
+        self.emblemImageView.image = image;
+    }];
 }
-*/
 
 @end
