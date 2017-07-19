@@ -338,44 +338,66 @@
         <!--My Profile View Controller-->
         <scene sceneID="eFw-Wf-QDN">
             <objects>
-                <viewController title="My Profile View Controller" id="wTi-ej-bp9" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController title="My Profile View Controller" automaticallyAdjustsScrollViewInsets="NO" id="wTi-ej-bp9" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6He-2g-CMD"/>
                         <viewControllerLayoutGuide type="bottom" id="ky9-vb-WZu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="U2t-qz-vFf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PUI-EN-htE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ob0-5W-HaX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="787"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hot-8q-lp6">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="787"/>
+                                        <subviews>
+                                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Dg-z9-87K">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="375" id="p21-OS-6tS"/>
+                                                    <constraint firstAttribute="height" constant="375" id="tu7-3q-hi0"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAZ-U4-lFv">
+                                                <rect key="frame" x="135" y="0.0" width="240" height="315"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.2468532986111111" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="2Dg-z9-87K" firstAttribute="top" secondItem="Hot-8q-lp6" secondAttribute="top" id="8iF-xn-mum"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Dg-z9-87K" secondAttribute="trailing" id="Dd9-PF-boF"/>
+                                            <constraint firstItem="2Dg-z9-87K" firstAttribute="leading" secondItem="Hot-8q-lp6" secondAttribute="leading" id="G4v-0S-5Xo"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="o9B-gD-fjj"/>
-                                    <constraint firstAttribute="height" constant="375" id="yJf-T6-Udu"/>
+                                    <constraint firstItem="Hot-8q-lp6" firstAttribute="leading" secondItem="Ob0-5W-HaX" secondAttribute="leading" id="JBW-Mh-nTf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hot-8q-lp6" secondAttribute="bottom" id="Tdx-3F-uQd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hot-8q-lp6" secondAttribute="trailing" id="Vnk-Sr-o9M"/>
+                                    <constraint firstItem="Hot-8q-lp6" firstAttribute="top" secondItem="Ob0-5W-HaX" secondAttribute="top" id="cfw-As-tPE"/>
+                                    <constraint firstItem="Hot-8q-lp6" firstAttribute="centerX" secondItem="Ob0-5W-HaX" secondAttribute="centerX" id="lCp-vf-a8z"/>
+                                    <constraint firstItem="Hot-8q-lp6" firstAttribute="centerY" secondItem="Ob0-5W-HaX" secondAttribute="centerY" id="nue-kS-qoc"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XCR-DJ-UQC">
-                                <rect key="frame" x="135" y="64" width="240" height="315"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="315" id="AL7-GJ-wpC"/>
-                                    <constraint firstAttribute="width" constant="240" id="TJU-dx-Tga"/>
-                                </constraints>
-                            </imageView>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="PUI-EN-htE" secondAttribute="trailing" id="6bj-Yv-s2u"/>
-                            <constraint firstItem="XCR-DJ-UQC" firstAttribute="top" secondItem="6He-2g-CMD" secondAttribute="bottom" id="FH9-rd-a1D"/>
-                            <constraint firstAttribute="trailing" secondItem="XCR-DJ-UQC" secondAttribute="trailing" id="WdS-qm-ESF"/>
-                            <constraint firstItem="PUI-EN-htE" firstAttribute="leading" secondItem="U2t-qz-vFf" secondAttribute="leading" id="bu0-5h-U0F"/>
-                            <constraint firstItem="PUI-EN-htE" firstAttribute="top" secondItem="6He-2g-CMD" secondAttribute="bottom" id="yad-9q-e2z"/>
+                            <constraint firstItem="Ob0-5W-HaX" firstAttribute="top" secondItem="6He-2g-CMD" secondAttribute="bottom" id="2YT-S1-yHg"/>
+                            <constraint firstAttribute="trailing" secondItem="Ob0-5W-HaX" secondAttribute="trailing" id="9G0-Wy-QyL"/>
+                            <constraint firstItem="ky9-vb-WZu" firstAttribute="top" secondItem="Ob0-5W-HaX" secondAttribute="bottom" id="Qld-hf-Ld1"/>
+                            <constraint firstItem="Ob0-5W-HaX" firstAttribute="leading" secondItem="U2t-qz-vFf" secondAttribute="leading" id="a9S-L3-h9k"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Profile" id="9gj-Pn-r65"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="900"/>
                     <connections>
-                        <outlet property="emblemImageView" destination="PUI-EN-htE" id="gtG-5P-aEx"/>
-                        <outlet property="spartanImageView" destination="XCR-DJ-UQC" id="pPP-dg-R44"/>
+                        <outlet property="emblemImageView" destination="2Dg-z9-87K" id="SOC-77-TII"/>
+                        <outlet property="spartanImageView" destination="oAZ-U4-lFv" id="xUi-1B-7qJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOt-KF-89O" userLabel="First Responder" sceneMemberID="firstResponder"/>
