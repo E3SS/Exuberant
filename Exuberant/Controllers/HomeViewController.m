@@ -32,6 +32,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSIndexPath *selectedRow = [self.tableView indexPathForSelectedRow];
+    
+    if (selectedRow != nil) {
+        [self.tableView deselectRowAtIndexPath:selectedRow animated:NO];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 275.0;

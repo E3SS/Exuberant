@@ -127,7 +127,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="KzD-sG-QOc">
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="KzD-sG-QOc">
                                 <rect key="frame" x="167.5" y="313.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="VC9-Od-GaU"/>
