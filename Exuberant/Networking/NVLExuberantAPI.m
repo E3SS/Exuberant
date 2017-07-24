@@ -75,7 +75,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 -(void)getArenaServiceRecord:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
 {
-    [self executeURLRequest:@"http://localhost:1337/h5/servicerecord" withParameters:@{@"players": gamertag} withCompletion:^(id json, NSError *error) {
+    [self executeURLRequest:@"http://localhost:1337/h5/servicerecord" withParameters:@{@"player": gamertag} withCompletion:^(id json, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }

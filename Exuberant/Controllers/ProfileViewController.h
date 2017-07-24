@@ -13,4 +13,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *spartanImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *emblemImageView;
 
+@property (weak, nonatomic) IBOutlet UILabel *gamertagLabel;
+@property (weak, nonatomic) IBOutlet UILabel *spartanRankLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalKillsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalAssistsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalDeathsLabel;
+
 @end

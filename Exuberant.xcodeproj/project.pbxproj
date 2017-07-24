@@ -30,6 +30,7 @@
 		ACA87C441F1E80FE00842774 /* NVLHaloServiceRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C431F1E80FE00842774 /* NVLHaloServiceRecord.m */; };
 		ACA87C471F1EF0EE00842774 /* PlaylistDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C461F1EF0EE00842774 /* PlaylistDataSource.m */; };
 		ACA87C4A1F1EF31D00842774 /* NVLHaloPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C491F1EF31D00842774 /* NVLHaloPlaylist.m */; };
+		ACA87C4D1F2015B200842774 /* GamerSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C4C1F2015B200842774 /* GamerSelectCell.m */; };
 		ACF0B7B01F192AB400B084EB /* NVLHaloGameVariant.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF0B7AF1F192AB400B084EB /* NVLHaloGameVariant.m */; };
 		ACF0B7B31F192C7700B084EB /* NVLExuberantAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF0B7B21F192C7700B084EB /* NVLExuberantAPI.m */; };
 		ACF0B7B61F195A3100B084EB /* GameVariantDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = ACF0B7B51F195A3100B084EB /* GameVariantDataSource.m */; };
@@ -81,6 +82,8 @@
 		ACA87C461F1EF0EE00842774 /* PlaylistDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaylistDataSource.m; path = "Data Sources/PlaylistDataSource.m"; sourceTree = "<group>"; };
 		ACA87C481F1EF31D00842774 /* NVLHaloPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLHaloPlaylist.h; path = Models/NVLHaloPlaylist.h; sourceTree = "<group>"; };
 		ACA87C491F1EF31D00842774 /* NVLHaloPlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLHaloPlaylist.m; path = Models/NVLHaloPlaylist.m; sourceTree = "<group>"; };
+		ACA87C4B1F2015B200842774 /* GamerSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamerSelectCell.h; path = Views/GamerSelectCell.h; sourceTree = "<group>"; };
+		ACA87C4C1F2015B200842774 /* GamerSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamerSelectCell.m; path = Views/GamerSelectCell.m; sourceTree = "<group>"; };
 		ACF0B7AE1F192AB400B084EB /* NVLHaloGameVariant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLHaloGameVariant.h; path = Models/NVLHaloGameVariant.h; sourceTree = "<group>"; };
 		ACF0B7AF1F192AB400B084EB /* NVLHaloGameVariant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLHaloGameVariant.m; path = Models/NVLHaloGameVariant.m; sourceTree = "<group>"; };
 		ACF0B7B11F192C7700B084EB /* NVLExuberantAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLExuberantAPI.h; path = Networking/NVLExuberantAPI.h; sourceTree = "<group>"; };
@@ -218,6 +221,8 @@
 			children = (
 				AC6603221F03493E00056585 /* MatchFeedCell.h */,
 				AC6603231F03493E00056585 /* MatchFeedCell.m */,
+				ACA87C4B1F2015B200842774 /* GamerSelectCell.h */,
+				ACA87C4C1F2015B200842774 /* GamerSelectCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA87C4D1F2015B200842774 /* GamerSelectCell.m in Sources */,
 				AC6602E51F017E3A00056585 /* InitialViewController.m in Sources */,
 				AC6603211F0344E900056585 /* NVLHaloMatch.m in Sources */,
 				ACF0B7B31F192C7700B084EB /* NVLExuberantAPI.m in Sources */,
