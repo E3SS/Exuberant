@@ -17,7 +17,7 @@
     if (self) {
         NSDictionary *results = dict;
         
-        _matchId = [results objectForKey:@"id"];
+        _matchId = [[results objectForKey:@"id"] objectForKey:@"MatchId"];
         _mapId = [results objectForKey:@"mapId"];
         _mapVarient = [results objectForKey:@"mapVariant"];
         _gameBaseVariantId = [results objectForKey:@"gameBaseVariantId"];
@@ -26,6 +26,7 @@
         _queriedPlayer = [results objectForKey:@"queriedPlayer"];
         _seasonId = [results objectForKey:@"seasonId"];
         _playlistId = [results objectForKey:@"playlistId"];
+        _playerData = [[NSMutableArray alloc] init];
     }
     return self;
 }

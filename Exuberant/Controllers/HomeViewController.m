@@ -8,6 +8,9 @@
 
 #import "HomeViewController.h"
 #import "HomeFeedDataSource.h"
+#import "MatchViewController.h"
+#import "NVLHaloMatch.h"
+#import "MatchDataSource.h"
 
 @interface HomeViewController ()
 
@@ -46,5 +49,14 @@
     return 275.0;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqual: @"presentMatchData"]) {
+        MatchViewController *destination = [segue destinationViewController];
+        NSIndexPath *selectedRowIndexPath = [self.tableView indexPathForSelectedRow];
+        NVLHaloMatch *match = [[MatchDataSource sharedInstance] getMatch: selectedRowIndexPath.row];
+        destination.match = match;
+    }
+}
 
 @end

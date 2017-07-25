@@ -25,6 +25,8 @@
 		AC6603211F0344E900056585 /* NVLHaloMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6603201F0344E900056585 /* NVLHaloMatch.m */; };
 		AC6603241F03493E00056585 /* MatchFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6603231F03493E00056585 /* MatchFeedCell.m */; };
 		AC6603281F034B9500056585 /* MatchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AC6603271F034B9500056585 /* MatchDataSource.m */; };
+		AC73C8121F269DAB003DAD3F /* MatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC73C8111F269DAB003DAD3F /* MatchViewController.m */; };
+		AC73C8151F26A0C8003DAD3F /* GamerMatchDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AC73C8141F26A0C8003DAD3F /* GamerMatchDetailCell.m */; };
 		AC7E9BAF1F04254B00188F4E /* NVLPendingOperations.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9BAE1F04254B00188F4E /* NVLPendingOperations.m */; };
 		AC7E9BB21F04297100188F4E /* NVLMapImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7E9BB11F04297100188F4E /* NVLMapImageDownloader.m */; };
 		ACA87C441F1E80FE00842774 /* NVLHaloServiceRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = ACA87C431F1E80FE00842774 /* NVLHaloServiceRecord.m */; };
@@ -72,6 +74,10 @@
 		AC6603231F03493E00056585 /* MatchFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MatchFeedCell.m; path = Views/MatchFeedCell.m; sourceTree = "<group>"; };
 		AC6603261F034B9500056585 /* MatchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchDataSource.h; sourceTree = "<group>"; };
 		AC6603271F034B9500056585 /* MatchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchDataSource.m; sourceTree = "<group>"; };
+		AC73C8101F269DAB003DAD3F /* MatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MatchViewController.h; path = Controllers/MatchViewController.h; sourceTree = "<group>"; };
+		AC73C8111F269DAB003DAD3F /* MatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MatchViewController.m; path = Controllers/MatchViewController.m; sourceTree = "<group>"; };
+		AC73C8131F26A0C8003DAD3F /* GamerMatchDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamerMatchDetailCell.h; path = Views/GamerMatchDetailCell.h; sourceTree = "<group>"; };
+		AC73C8141F26A0C8003DAD3F /* GamerMatchDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GamerMatchDetailCell.m; path = Views/GamerMatchDetailCell.m; sourceTree = "<group>"; };
 		AC7E9BAD1F04254B00188F4E /* NVLPendingOperations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLPendingOperations.h; path = Networking/NVLPendingOperations.h; sourceTree = "<group>"; };
 		AC7E9BAE1F04254B00188F4E /* NVLPendingOperations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NVLPendingOperations.m; path = Networking/NVLPendingOperations.m; sourceTree = "<group>"; };
 		AC7E9BB01F04297100188F4E /* NVLMapImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NVLMapImageDownloader.h; path = Networking/NVLMapImageDownloader.h; sourceTree = "<group>"; };
@@ -184,6 +190,8 @@
 				AC6603081F02C84A00056585 /* ProfileViewController.m */,
 				AC66030A1F02C87000056585 /* SearchViewController.h */,
 				AC66030B1F02C87000056585 /* SearchViewController.m */,
+				AC73C8101F269DAB003DAD3F /* MatchViewController.h */,
+				AC73C8111F269DAB003DAD3F /* MatchViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +231,8 @@
 				AC6603231F03493E00056585 /* MatchFeedCell.m */,
 				ACA87C4B1F2015B200842774 /* GamerSelectCell.h */,
 				ACA87C4C1F2015B200842774 /* GamerSelectCell.m */,
+				AC73C8131F26A0C8003DAD3F /* GamerMatchDetailCell.h */,
+				AC73C8141F26A0C8003DAD3F /* GamerMatchDetailCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -336,6 +346,8 @@
 				ACA87C4D1F2015B200842774 /* GamerSelectCell.m in Sources */,
 				AC6602E51F017E3A00056585 /* InitialViewController.m in Sources */,
 				AC6603211F0344E900056585 /* NVLHaloMatch.m in Sources */,
+				AC73C8151F26A0C8003DAD3F /* GamerMatchDetailCell.m in Sources */,
+				AC73C8121F269DAB003DAD3F /* MatchViewController.m in Sources */,
 				ACF0B7B31F192C7700B084EB /* NVLExuberantAPI.m in Sources */,
 				AC6603091F02C84A00056585 /* ProfileViewController.m in Sources */,
 				AC6603281F034B9500056585 /* MatchDataSource.m in Sources */,

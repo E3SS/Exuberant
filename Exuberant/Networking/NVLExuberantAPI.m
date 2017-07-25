@@ -41,7 +41,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 - (void)getGameBaseVariants:(CompletionHandler)completionHandler
 {
-    [self executeURLRequest:@"http://localhost:1337/h5/gamebasevariants" withParameters:nil withCompletion:^(id json, NSError *error) {
+    [self executeURLRequest:@"https://exuberant-api.herokuapp.com/h5/gamebasevariants" withParameters:nil withCompletion:^(id json, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }
@@ -53,7 +53,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 - (void)getMaps:(CompletionHandler)completionHandler
 {
-    [self executeURLRequest:@"http://localhost:1337/h5/maps" withParameters:nil withCompletion:^(id json, NSError *error) {
+    [self executeURLRequest:@"https://exuberant-api.herokuapp.com/h5/maps" withParameters:nil withCompletion:^(id json, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }
@@ -64,7 +64,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 - (void)getPlaylists:(CompletionHandler)completionHandler
 {
-    [self executeURLRequest:@"http://localhost:1337/h5/playlists" withParameters:nil withCompletion:^(id json, NSError *error) {
+    [self executeURLRequest:@"https://exuberant-api.herokuapp.com/h5/playlists" withParameters:nil withCompletion:^(id json, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }
@@ -75,7 +75,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 -(void)getArenaServiceRecord:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
 {
-    [self executeURLRequest:@"http://localhost:1337/h5/servicerecord" withParameters:@{@"player": gamertag} withCompletion:^(id json, NSError *error) {
+    [self executeURLRequest:@"https://exuberant-api.herokuapp.com/h5/servicerecord" withParameters:@{@"player": gamertag} withCompletion:^(id json, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }
@@ -89,10 +89,8 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
     NSString *startIndexStr = [NSString stringWithFormat:@"%d", startIndex];
     NSString *countStr = [NSString stringWithFormat:@"%d", count];
     
-    [self executeURLRequest:@"http://localhost:1337/h5/matches" withParameters:@{@"player": player, @"mode": mode, @"start": startIndexStr, @"count": countStr} withCompletion:^(id json, NSError *error) {
-        if (error != nil) {
-            completionHandler(nil, error);
-        }
+    [self executeURLRequest:@"https://exuberant-api.herokuapp.com/h5/matches" withParameters:@{@"player": player, @"mode": mode, @"start": startIndexStr, @"count": countStr} withCompletion:^(id json, NSError *error) {
+        
         
         NSArray *results = json;
         
@@ -100,9 +98,20 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
     }];
 }
 
+- (void)getMatchDataFor:(NSString *)matchId completionHandler:(CompletionHandler)completionHandler
+{
+    [self executeURLRequest:@"https://exuberant-api.herokuapp.com/h5/match" withParameters:@{@"matchId": matchId} withCompletion:^(id json, NSError *error) {
+        if (error != nil) {
+            completionHandler(nil, error);
+        }
+        
+        completionHandler(json, nil);
+    }];
+}
+
 - (void)getGamerTagProfile:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler
 {
-    [self executeURLRequest:@"http://localhost:1337/xboxlive/profile" withParameters:@{@"gamertag": gamertag} withCompletion:^(id json, NSError *error) {
+    [self executeURLRequest:@"https://exuberant-api.herokuapp.com/xboxlive/profile" withParameters:@{@"gamertag": gamertag} withCompletion:^(id json, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }
@@ -113,7 +122,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 - (void)getSpartanImage:(NSString *)gamertag withSize:(NSString *)size completion:(ImageCompletionHandler)completionHandler
 {
-    [self executeImageRequest:@"http://localhost:1337/h5/spartan" withParameters:@{@"player": gamertag, @"size": @"512"} withCompletion:^(UIImage *image, NSError *error) {
+    [self executeImageRequest:@"https://exuberant-api.herokuapp.com/h5/spartan" withParameters:@{@"player": gamertag, @"size": @"512"} withCompletion:^(UIImage *image, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }
@@ -124,7 +133,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 
 - (void)getEmblemImage:(NSString *)gamertag withSize:(NSString *)size completion:(ImageCompletionHandler)completionHandler
 {
-    [self executeImageRequest:@"http://localhost:1337/h5/emblem" withParameters:@{@"player": gamertag, @"size": size} withCompletion:^(UIImage *image, NSError *error) {
+    [self executeImageRequest:@"https://exuberant-api.herokuapp.com/h5/emblem" withParameters:@{@"player": gamertag, @"size": size} withCompletion:^(UIImage *image, NSError *error) {
         if (error != nil) {
             completionHandler(nil, error);
         }

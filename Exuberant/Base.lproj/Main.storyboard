@@ -157,6 +157,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="KzD-sG-QOc" id="6el-8c-qso"/>
                         <outlet property="collectionView" destination="8ok-vy-Sjz" id="96U-w0-Bei"/>
+                        <outlet property="doneButton" destination="gUt-by-8yB" id="8aC-D8-2qt"/>
                         <outlet property="textField" destination="kAM-ta-PTF" id="2zL-MO-W24"/>
                         <segue destination="sZb-Oe-Z9c" kind="show" identifier="segueToMainFromSetup" id="D9U-cy-uFK"/>
                     </connections>
@@ -345,10 +346,10 @@
             </objects>
             <point key="canvasLocation" x="3520.8000000000002" y="-744.3778110944528"/>
         </scene>
-        <!--View Controller-->
+        <!--Match View Controller-->
         <scene sceneID="n4h-Ag-uuW">
             <objects>
-                <viewController id="vbJ-CQ-Wti" sceneMemberID="viewController">
+                <viewController id="vbJ-CQ-Wti" customClass="MatchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eub-Tj-fbb"/>
                         <viewControllerLayoutGuide type="bottom" id="01s-zL-A2f"/>
@@ -356,12 +357,84 @@
                     <view key="view" contentMode="scaleToFill" id="P6a-1a-ejn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Q48-zO-sI0">
+                                <rect key="frame" x="0.0" y="64" width="375" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="SZy-9j-6EC"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MODE on MAP NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xrd-JJ-4uu">
+                                <rect key="frame" x="16" y="72" width="343" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mQt-8s-ZvC">
+                                <rect key="frame" x="0.0" y="294" width="375" height="324"/>
+                                <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="matchDetailGamertagCell" rowHeight="48" id="1S2-hF-ujT" customClass="GamerMatchDetailCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1S2-hF-ujT" id="Lwe-xT-7K5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="{{ GAMERTAG }}" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DDH-Bx-zrq">
+                                                    <rect key="frame" x="16" y="12.5" width="146.5" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="DDH-Bx-zrq" firstAttribute="centerY" secondItem="Lwe-xT-7K5" secondAttribute="centerY" id="JIc-ec-gj7"/>
+                                                <constraint firstItem="DDH-Bx-zrq" firstAttribute="leading" secondItem="Lwe-xT-7K5" secondAttribute="leadingMargin" constant="8" id="zfI-fu-7ag"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="gamertagLabel" destination="DDH-Bx-zrq" id="jb8-Br-sol"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcV-9h-OFZ">
+                                <rect key="frame" x="16" y="262" width="343" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="0.24834526909722221" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="dcV-9h-OFZ" secondAttribute="trailing" id="26Z-dc-mHA"/>
+                            <constraint firstItem="01s-zL-A2f" firstAttribute="top" secondItem="mQt-8s-ZvC" secondAttribute="bottom" id="4hi-Nv-SRW"/>
+                            <constraint firstItem="Q48-zO-sI0" firstAttribute="leading" secondItem="P6a-1a-ejn" secondAttribute="leading" id="Dlj-74-TMe"/>
+                            <constraint firstItem="dcV-9h-OFZ" firstAttribute="leading" secondItem="P6a-1a-ejn" secondAttribute="leading" constant="16" id="HXw-LK-5HJ"/>
+                            <constraint firstItem="mQt-8s-ZvC" firstAttribute="leading" secondItem="P6a-1a-ejn" secondAttribute="leading" id="I5l-d7-Pzy"/>
+                            <constraint firstAttribute="trailing" secondItem="mQt-8s-ZvC" secondAttribute="trailing" id="KLd-bG-4bX"/>
+                            <constraint firstItem="Q48-zO-sI0" firstAttribute="top" secondItem="eub-Tj-fbb" secondAttribute="bottom" id="Lpu-yz-TyC"/>
+                            <constraint firstAttribute="trailing" secondItem="Q48-zO-sI0" secondAttribute="trailing" id="NKy-eQ-Bpm"/>
+                            <constraint firstItem="Xrd-JJ-4uu" firstAttribute="top" secondItem="eub-Tj-fbb" secondAttribute="bottom" constant="8" id="W6J-na-DhI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xrd-JJ-4uu" secondAttribute="trailing" id="ZBS-al-Swg"/>
+                            <constraint firstItem="mQt-8s-ZvC" firstAttribute="top" secondItem="dcV-9h-OFZ" secondAttribute="bottom" constant="8" id="d95-Bg-5Iz"/>
+                            <constraint firstItem="Xrd-JJ-4uu" firstAttribute="leading" secondItem="P6a-1a-ejn" secondAttribute="leadingMargin" id="m7F-kf-9F6"/>
+                            <constraint firstItem="dcV-9h-OFZ" firstAttribute="top" secondItem="Q48-zO-sI0" secondAttribute="bottom" constant="48" id="p5J-48-Qtf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gameLabel" destination="Xrd-JJ-4uu" id="YU1-Yz-5A0"/>
+                        <outlet property="gamerTableView" destination="mQt-8s-ZvC" id="dOy-Cx-dVu"/>
+                        <outlet property="mapImage" destination="Q48-zO-sI0" id="ggc-Eq-TvJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLx-6f-hGn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4492" y="-744"/>
+            <point key="canvasLocation" x="4492" y="-744.3778110944528"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0wh-Je-517">
@@ -517,7 +590,7 @@
         <scene sceneID="cQr-hA-twm">
             <objects>
                 <navigationController title="Home Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="nMx-Ag-E2j" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="BTl-q4-Yww"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="BTl-q4-Yww"/>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="19n-yV-iKe">
@@ -542,7 +615,7 @@
         <scene sceneID="Dyt-sl-vwR">
             <objects>
                 <navigationController title="My Profile Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" id="FQy-bk-W1N" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Profile" id="oQ0-fp-I0h"/>
+                    <tabBarItem key="tabBarItem" title="My Profile" image="user" id="oQ0-fp-I0h"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OHm-fZ-m7Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -564,6 +637,8 @@
     </scenes>
     <resources>
         <image name="Placeholder" width="1920" height="1080"/>
+        <image name="home" width="28" height="28"/>
+        <image name="user" width="28" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="D9U-cy-uFK"/>

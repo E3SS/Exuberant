@@ -56,6 +56,10 @@
 {
     self.collectionView.alpha = 0.2;
     self.textField.alpha = 0.2;
+    
+    [self.doneButton setEnabled:NO];
+    self.doneButton.userInteractionEnabled = NO;
+    
     [self.activityIndicator startAnimating];
     
     [[NVLExuberantAPI sharedInstance] getGamerTagProfile:gamertag completionHandler:^(id json, NSError *error) {

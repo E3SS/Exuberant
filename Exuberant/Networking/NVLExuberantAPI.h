@@ -19,6 +19,7 @@ typedef void (^ImageCompletionHandler)(UIImage *image, NSError *error);
 - (void)getPlaylists:(CompletionHandler)completionHandler;
 -(void)getArenaServiceRecord:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
 - (void)getPlayerMatchHistoryFor:(NSString *)player forMode:(NSString *)mode startIndex:(int)startIndex count:(int)count completionHandler:(CompletionHandler)completionHandler;
+- (void)getMatchDataFor:(NSString *)matchId completionHandler:(CompletionHandler)completionHandler;
 - (void)getGamerTagProfile:(NSString *)gamertag completionHandler:(CompletionHandler)completionHandler;
 - (void)getSpartanImage:(NSString *)gamertag withSize:(NSString *)size completion:(ImageCompletionHandler)completionHandler;
 - (void)getEmblemImage:(NSString *)gamertag withSize:(NSString *)size completion:(ImageCompletionHandler)completionHandler;

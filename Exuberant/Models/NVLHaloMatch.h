@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSDictionary *queriedPlayer;
 @property (strong, nonatomic) NSString *seasonId;
 @property (strong, nonatomic) NSString *playlistId;
+@property (strong, nonatomic) NSMutableArray *playerData;
 
 - (id)initWithDictionary:(NSDictionary *)dict forGamertag:(NVLGamertag *)gamertag;
 
